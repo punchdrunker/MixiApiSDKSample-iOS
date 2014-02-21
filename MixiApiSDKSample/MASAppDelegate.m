@@ -7,12 +7,20 @@
 //
 
 #import "MASAppDelegate.h"
+#import "MixiSDK.h"
 
 @implementation MASAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    Mixi *mixi = [[Mixi sharedMixi] setupWithType:kMixiApiTypeSelectorMixiApp
+                                         clientId:@"mixiapp-web_?????"
+                                           secret:@"your-secret-string"
+                                      redirectUrl:@"your-redirect-url"];
+
+    [mixi restore];
+    [mixi reportOncePerDay];
+    
     return YES;
 }
 							
